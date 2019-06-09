@@ -70,7 +70,7 @@ table.table th:hover {
 	<td><%=rs.getString("Description") %></td>
 	<td style="width: 20%"> 
 	<a href="./Eposition.jsp?u=<%=rs.getString("PositionID")%>"> <button type = "button" class="btn btn-warning">Edit</button></a>
-	<a href="./Dposition.jsp?d=<%=rs.getString("PositionID")%>" > <button type = "button" onclick="return confirm('Ви впевнені, що хочете видалити дану посаду?');" class="btn btn-danger">Delete</button></a>
+	<a href="./Dposition.jsp?d=<%=rs.getString("PositionID")%>" > <button type = "button" onclick="return confirm('Ви впевнені, що хочете видалити даний запис?');" class="btn btn-danger">Delete</button></a>
 	 
 	</td>
 	</tr>

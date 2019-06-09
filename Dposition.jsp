@@ -51,6 +51,6 @@ catch (Exception e) {
  <div id="centered">
   <h1> Помилка!</h1>
  
-<p> Ви не можете видалити дані, оскільки вони використовується! <a href="Sposition.jsp" class="btn btn-default">Назад</a></p>
+<p> Ви не можете видалити дані, оскільки вони використовуються! <a href="Sposition.jsp" class="btn btn-default">Назад</a></p>
  </div>
  <% }%>
