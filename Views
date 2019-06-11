@@ -29,3 +29,13 @@ INNER JOIN  Business.Service s ON s.ServiceID = sd.ServiceID
 INNER JOIN Business.ServiceCategory sc ON s.ServiceCategoryID=sc.ServiceCategoryID
 )  
 GO
+
+
+
+CREATE  VIEW [dbo].[ShowServices]
+AS
+(
+SELECT s.ServiceID, sc.ServiceCategoryID, s.Name, sc.Name as cat FROM  Business.Service s
+INNER JOIN Business.ServiceCategory sc ON s.ServiceCategoryID=sc.ServiceCategoryID
+)  
+GO
