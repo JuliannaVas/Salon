@@ -1,0 +1,31 @@
+CREATE  VIEW [dbo].[ShowServiceC]
+AS
+(
+SELECT s.ServiceID, sc.ServiceCategoryID, s.Name +', ' + sc.Name as service FROM  Business.Service s
+INNER JOIN Business.ServiceCategory sc ON s.ServiceCategoryID=sc.ServiceCategoryID
+)  
+GO
+
+
+
+
+
+CREATE VIEW [dbo].[ShowSerC]
+AS
+(
+SELECT s.Name, s.ServiceID, sc.Name as cat FROM  Business.Service s
+INNER JOIN Business.ServiceCategory sc ON s.ServiceCategoryID=sc.ServiceCategoryID
+)  
+GO
+
+
+
+
+CREATE VIEW [dbo].[ShowDesc]
+AS
+(
+SELECT s.Name, s.ServiceID, sc.Name as cat, sc.ServiceCategoryID, Price, ServiceDescriptionID, Description FROM  Business.ServiceDescription sd
+INNER JOIN  Business.Service s ON s.ServiceID = sd.ServiceID
+INNER JOIN Business.ServiceCategory sc ON s.ServiceCategoryID=sc.ServiceCategoryID
+)  
+GO
