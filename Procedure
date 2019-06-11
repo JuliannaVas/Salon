@@ -1,0 +1,84 @@
+CREATE  PROCEDURE [Sales].[INS_Ser]
+  ( @Name NVARCHAR(max),	
+  @ServiceCategory VARCHAR(max)
+  
+  )
+  AS
+  BEGIN 
+   
+	DECLARE @ErrorMessage VARCHAR(1000),
+			@ServiceCategoryID INT = (SELECT ServiceCategoryID FROM Business.ServiceCategory WHERE Name=@ServiceCategory) --get product id
+		
+	BEGIN TRANSACTION	
+			BEGIN TRY
+
+				
+			
+		INSERT INTO Business.Service(
+								
+								Name,
+								ServiceCategoryID
+								)
+
+					VALUES (
+								@Name,
+								@ServiceCategoryID
+													)
+
+			END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION
+		PRINT @ErrorMessage
+	END CATCH
+IF @@TRANCOUNT > 0
+COMMIT TRANSACTION
+END
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [Business].[INS_Desc]
+       (
+		@Service NVARCHAR(max),
+		--@Category NVARCHAR(max),
+		@Price DECIMAL,
+		@Description NVARCHAR(max) NULL		
+	   )	 
+	AS
+BEGIN 
+  
+	DECLARE @ErrorMessage VARCHAR(1000),
+			@ServiceID INT = (SELECT ServiceID FROM dbo.ShowServiceC WHERE service=@Service )
+
+		--	@nam INT = (SELECT Amount FROM Sales.Products WHERE @ID=ProductID)
+	
+	
+		BEGIN TRANSACTION
+			
+		BEGIN TRY
+
+		INSERT INTO Business.ServiceDescription
+					  ( 
+					  	ServiceID,		
+						Price,
+						Description
+						      
+					  ) 
+				VALUES(	
+						@ServiceID,
+						@Price,
+						@Description	
+					  )
+	END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION
+		PRINT @ErrorMessage
+	END CATCH
+IF @@TRANCOUNT > 0
+COMMIT TRANSACTION
+END
